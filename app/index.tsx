@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -17,10 +17,13 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
+import { useColorScheme } from "react-native";
 
 export default function HomeScreen() {
   const scale = useSharedValue(0);
   const router = useRouter();
+  const colorScheme = useColorScheme(); // Détection du thème (light ou dark)
+
   useEffect(() => {
     scale.value = withSpring(1, { damping: 20, stiffness: 100 });
   }, []);
@@ -37,7 +40,11 @@ export default function HomeScreen() {
     <ThemedView>
       <Image
         style={styles.image}
-        source={require("../assets/images/icon.png")}
+        source={
+          colorScheme === "dark"
+            ? require("../assets/images/icon-black.png") // Icône pour le thème sombre
+            : require("../assets/images/icon.png") // Icône pour le thème clair
+        }
         alt="Logo"
       />
       <Animated.View style={[styles.containerHeroText, animatedStyle]}>
