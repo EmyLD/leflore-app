@@ -62,55 +62,57 @@ export default function signup() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Inscription</Text>
-      <TextInput
-        placeholder="Pseudo"
-        value={pseudo}
-        onChangeText={setPseudo}
-        style={styles.input}
-        autoCapitalize="words"
-        autoCorrect={false}
-      />
-      <Text style={styles.helperText}>
-        Ce sera le nom affiché pour vos voisins.
-      </Text>
-      <TextInput
-        placeholder="Numéro d'appartement"
-        value={flatNb}
-        onChangeText={setFlatNb}
-        style={styles.input}
-        keyboardType="default"
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        style={styles.input}
-        keyboardType="email-address"
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-      <TextInput
-        placeholder="Mot de passe"
-        value={password}
-        onChangeText={setPassword}
-        style={styles.input}
-        secureTextEntry
-      />
-      {message ? <Text style={styles.message}>{message}</Text> : null}
+      <View style={styles.box}>
+        <Text style={styles.title}>Inscription</Text>
+        <TextInput
+          placeholder="Pseudo"
+          value={pseudo}
+          onChangeText={setPseudo}
+          style={styles.input}
+          autoCapitalize="words"
+          autoCorrect={false}
+        />
+        <Text style={styles.helperText}>
+          Ce sera le nom affiché pour vos voisins.
+        </Text>
+        <TextInput
+          placeholder="Numéro d'appartement"
+          value={flatNb}
+          onChangeText={setFlatNb}
+          style={styles.input}
+          keyboardType="default"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
+        <TextInput
+          placeholder="Mot de passe"
+          value={password}
+          onChangeText={setPassword}
+          style={styles.input}
+          secureTextEntry
+        />
+        {message ? <Text style={styles.message}>{message}</Text> : null}
 
-      <ThemedButton
-        title="S'inscrire"
-        onPress={handleSignUp}
-        style={styles.confirmBtn}
-      />
+        <ThemedButton
+          title="S'inscrire"
+          onPress={handleSignUp}
+          style={styles.confirmBtn}
+        />
 
-      <ThemedLink
-        title="Déjà inscrit ?"
-        onPress={() => router.replace("/login")}
-      />
+        <ThemedLink
+          title="Déjà inscrit ?"
+          onPress={() => router.replace("/login")}
+        />
+      </View> {/* Fin de la vue encadrée */}
     </View>
   );
 }
@@ -119,9 +121,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 20,
-    backgroundColor: "#f7f9fc",
+    padding: 30,
+    backgroundColor: "#A7C7E7",
   },
+  // Inscription
   title: {
     fontSize: 24,
     fontWeight: "bold",
@@ -129,14 +132,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333",
   },
+  // Les champs à remplir
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
     padding: 10,
     marginVertical: 10,
-    borderRadius: 5,
+    borderRadius: 20,
     backgroundColor: "#fff",
   },
+  // Ce sera le nom affiché pour vos voisins
   helperText: {
     fontSize: 14,
     marginBottom: 10,
@@ -146,10 +151,21 @@ const styles = StyleSheet.create({
   confirmBtn: {
     marginVertical: 20,
   },
+  // Veuillez remplir tout les champs
   message: {
     marginTop: 20,
     fontSize: 16,
     textAlign: "center",
     color: "red",
   },
+
+  // Nouveau style pour le cadre
+  box: {
+    borderWidth: 2,
+    borderColor: "#ccc",
+    borderRadius: 50,
+    padding: 20,
+    backgroundColor: "#F0E2C2",
+  },
 });
+

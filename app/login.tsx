@@ -32,6 +32,7 @@ export default function login() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.box}>
       <Text style={styles.title}>Connexion</Text>
       <TextInput
         placeholder="Email"
@@ -55,6 +56,7 @@ export default function login() {
         title="Pas encore inscrit ?"
         onPress={() => router.replace("/signup")}
       />
+      </View>
     </View>
   );
 }
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 20,
-    backgroundColor: "#f7f9fc",
+    backgroundColor: "#A7C7E7",
   },
   title: {
     fontSize: 24,
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     padding: 10,
     marginVertical: 10,
-    borderRadius: 5,
+    borderRadius: 20,
     backgroundColor: "#fff",
   },
   message: {
@@ -86,5 +88,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "center",
     color: "red",
+  },
+  box: {
+    borderWidth: 2,
+    borderColor: "#ccc",
+    borderRadius: 50,
+    padding: 20,
+    backgroundColor: "#F0E2C2",
   },
 });
