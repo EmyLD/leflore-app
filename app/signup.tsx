@@ -4,15 +4,16 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, firestore } from "@/scripts/firebase";
 import { ThemedButton } from "@/components/ThemedButton";
 import { ThemedLink } from "@/components/ThemedLink";
-import { router } from "expo-router";
+import { useRouter } from "expo-router";
 import { doc, setDoc } from "firebase/firestore";
 
-export default function signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [pseudo, setPseudo] = useState("");
-  const [flatNb, setFlatNb] = useState("");
-  const [message, setMessage] = useState("");
+export default function Signup() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [pseudo, setPseudo] = useState<string>("");
+  const [flatNb, setFlatNb] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const router = useRouter();
 
   const handleSignUp = async () => {
     if (!pseudo || !email || !password || !flatNb) {
@@ -27,11 +28,7 @@ export default function signup() {
 
     try {
       // Crée l'utilisateur dans Firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
       // Récupère les informations de l'utilisateur
       const user = userCredential.user;
@@ -112,7 +109,7 @@ export default function signup() {
           title="Déjà inscrit ?"
           onPress={() => router.replace("/login")}
         />
-      </View> {/* Fin de la vue encadrée */}
+      </View>
     </View>
   );
 }
@@ -124,7 +121,6 @@ const styles = StyleSheet.create({
     padding: 30,
     backgroundColor: "#A7C7E7",
   },
-  // Inscription
   title: {
     fontSize: 24,
     fontWeight: "bold",
@@ -132,7 +128,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333",
   },
-  // Les champs à remplir
   input: {
     borderWidth: 1,
     borderColor: "#ccc",
@@ -141,7 +136,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#fff",
   },
-  // Ce sera le nom affiché pour vos voisins
   helperText: {
     fontSize: 14,
     marginBottom: 10,
@@ -151,15 +145,12 @@ const styles = StyleSheet.create({
   confirmBtn: {
     marginVertical: 20,
   },
-  // Veuillez remplir tout les champs
   message: {
     marginTop: 20,
     fontSize: 16,
     textAlign: "center",
     color: "red",
   },
-
-  // Nouveau style pour le cadre
   box: {
     borderWidth: 2,
     borderColor: "#ccc",
@@ -168,4 +159,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#F0E2C2",
   },
 });
-
